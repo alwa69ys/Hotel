@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هتلینو | رزرو هتل</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+:root{--navy:#142b3b;--teal:#0d9488;--gold:#e9b65b;--muted:#718096;--bg:#f5f7f8}
+*{box-sizing:border-box}body{margin:0;font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:#203342}
+a{text-decoration:none;color:inherit}.wrap{width:min(1160px,92%);margin:auto}
+header{background:#fff;border-bottom:1px solid #edf0f2;position:sticky;top:0;z-index:5}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:25px;font-weight:800;color:var(--navy)}.logo span{color:var(--teal)}
+.links{display:flex;gap:28px;color:#526371;font-size:14px}.actions{display:flex;gap:10px;align-items:center}
+.btn{border:0;border-radius:12px;padding:12px 20px;font:inherit;font-weight:700;cursor:pointer}
+.btn-outline{background:white;border:1px solid #dce4e8;color:var(--navy)}.btn-primary{background:var(--teal);color:white;box-shadow:0 8px 20px #0d948833}
+.hero{background:linear-gradient(110deg,#102b3bdf,#102b3b99),url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=85') center/cover;color:white;padding:82px 0 105px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.5;margin:0 0 12px}.hero p{color:#e2edf0;margin:0 0 30px;font-size:16px}
+.search{background:white;color:#243746;padding:15px;border-radius:18px;display:grid;grid-template-columns:1.4fr 1fr 1fr .8fr auto;gap:10px;box-shadow:0 18px 45px #081c2a55}
+.field{padding:8px 12px;border-left:1px solid #edf0f2}.field label{display:block;font-size:11px;color:#82909b;margin-bottom:5px}.field input,.field select{border:0;outline:0;width:100%;font:inherit;color:#203342;background:transparent;font-size:14px}
+.search .btn{align-self:stretch;padding:0 24px}
+.section{padding:58px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}.section h2{font-size:25px;margin:0 0 7px;color:var(--navy)}.sub{color:var(--muted);font-size:14px;margin:0}
+.cities{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.city{height:190px;border-radius:18px;overflow:hidden;position:relative;color:white}.city img{width:100%;height:100%;object-fit:cover;transition:.4s}.city:hover img{transform:scale(1.06)}.city:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#071c2acc)}.city b,.city small{position:absolute;z-index:1;right:17px}.city b{bottom:35px;font-size:20px}.city small{bottom:14px;color:#e2e8f0}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}.chip{border:1px solid #dce4e8;background:#fff;color:#526371;padding:8px 15px;border-radius:30px;font:inherit;font-size:13px;cursor:pointer}.chip.active{background:#e2f4f1;color:#087d73;border-color:#b9e4dd}
+.hotels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.hotel{background:white;border-radius:18px;overflow:hidden;border:1px solid #edf0f2;transition:.2s}.hotel:hover{transform:translateY(-4px);box-shadow:0 14px 30px #172b3b12}.hotel img{width:100%;height:190px;object-fit:cover}.hotel-body{padding:17px}.hotel-top{display:flex;justify-content:space-between;align-items:center}.hotel h3{margin:0;font-size:17px;color:var(--navy)}.rating{font-size:12px;color:#b7791f;background:#fff6df;padding:5px 9px;border-radius:20px}.place{font-size:12px;color:var(--muted);margin:8px 0 15px}.amenities{display:flex;gap:12px;color:#657582;font-size:11px;padding-bottom:15px;border-bottom:1px solid #eef1f3}.price-row{display:flex;justify-content:space-between;align-items:center;padding-top:14px}.price strong{font-size:19px;color:var(--teal)}.price small{display:block;color:#87939c;font-size:11px}.detail{font-size:12px;color:var(--teal);font-weight:700}
+.promo{background:#e4f3f0;border-radius:22px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:20px}.promo h2{margin:0 0 8px}.promo p{margin:0;color:#58716f;font-size:14px}
+footer{background:#142b3b;color:#d7e1e7;padding:38px 0;margin-top:20px}.foot{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.foot p{color:#9eafb9;font-size:13px;max-width:430px}.foot strong{font-size:22px}
+.modal{display:none;position:fixed;inset:0;background:#071c2a99;z-index:10;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.dialog{background:white;border-radius:20px;padding:25px;max-width:420px;width:100%;text-align:center}.dialog h3{margin-top:0}.dialog p{color:#667784;font-size:14px;line-height:1.9}.dialog .btn{width:100%;margin-top:10px}
+@media(max-width:850px){.search{grid-template-columns:1fr 1fr}.search .btn{min-height:48px}.cities{grid-template-columns:repeat(2,1fr)}.hotels{grid-template-columns:repeat(2,1fr)}.links{display:none}}
+@media(max-width:560px){.nav{height:65px}.actions .btn-outline{display:none}.hero{padding:58px 0 75px}.search{grid-template-columns:1fr}.field{border-left:0;border-bottom:1px solid #edf0f2}.cities,.hotels{grid-template-columns:1fr}.city{height:170px}.section{padding:42px 0}.promo{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#">هتل<span>ینو</span></a>
+<nav class="links"><a href="#hotels">هتل‌ها</a><a href="#cities">مقصدها</a><a href="#about">درباره ما</a></nav>
+<div class="actions"><button class="btn btn-outline" onclick="showModal('ورود به حساب','این بخش در نسخه نمایشی است و به سامانه ورود واقعی متصل نیست.')">ورود</button><button class="btn btn-primary" onclick="showModal('عضویت در هتلینو','برای نسخه واقعی می‌توان ثبت‌نام و پنل کاربری را به این بخش متصل کرد.')">ثبت‌نام</button></div>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+<h1>سفر بعدی‌ات را<br>با خیال راحت رزرو کن</h1>
+<p>اقامتگاه دلخواهت را پیدا کن؛ ساده، سریع و مطمئن.</p>
+<div class="search">
+<div class="field"><label>مقصد یا نام هتل</label><input id="destination" placeholder="مثلاً: تهران، شیراز، هتل پارسیان"></div>
+<div class="field"><label>تاریخ ورود</label><input type="date" id="checkin"></div>
+<div class="field"><label>تاریخ خروج</label><input type="date" id="checkout"></div>
+<div class="field"><label>تعداد مسافران</label><select id="guests"><option>۱ نفر</option><option selected>۲ نفر</option><option>۳ نفر</option><option>۴ نفر</option><option>۵ نفر یا بیشتر</option></select></div>
+<button class="btn btn-primary" onclick="searchHotels()">جستجوی هتل</button>
+</div></div></section>
+<section class="section" id="cities"><div class="wrap">
+<div class="section-head"><div><h2>مقصدهای محبوب</h2><p class="sub">برای شروع، یکی از شهرهای پرطرفدار را انتخاب کن.</p></div></div>
+<div class="cities">
+<a class="city" href="#hotels" onclick="setCity('تهران')"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=700&q=80"><b>تهران</b><small>اقامت در پایتخت</small></a>
+<a class="city" href="#hotels" onclick="setCity('شیراز')"><img src="https://images.unsplash.com/photo-1590050752117-23a9d7fc6c48?auto=format&fit=crop&w=700&q=80"><b>شیراز</b><small>شهر شعر و باغ</small></a>
+<a class="city" href="#hotels" onclick="setCity('اصفهان')"><img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=700&q=80"><b>اصفهان</b><small>نصف جهان</small></a>
+<a class="city" href="#hotels" onclick="setCity('کیش')"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=700&q=80"><b>کیش</b><small>ساحل و آرامش</small></a>
+</div></div></section>
+<section class="section" id="hotels" style="padding-top:10px"><div class="wrap">
+<div class="section-head"><div><h2>هتل‌های پیشنهادی</h2><p class="sub" id="resultText">اقامتگاه‌هایی که شاید دوست داشته باشی</p></div><span class="sub">قیمت‌ها نمایشی هستند</span></div>
+<div class="filters"><button class="chip active" onclick="filterHotels('همه',this)">همه هتل‌ها</button><button class="chip" onclick="filterHotels('لوکس',this)">لوکس</button><button class="chip" onclick="filterHotels('اقتصادی',this)">اقتصادی</button><button class="chip" onclick="filterHotels('ساحلی',this)">ساحلی</button></div>
+<div class="hotels" id="hotelList">
+<article class="hotel" data-city="تهران" data-type="لوکس"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85"><div class="hotel-body"><div class="hotel-top"><h3>هتل بزرگ آریا</h3><span class="rating">★ ۴.۸</span></div><div class="place">📍 تهران، مرکز شهر</div><div class="amenities"><span>❄ تهویه مطبوع</span><span>☕ صبحانه</span><span>📶 اینترنت</span></div><div class="price-row"><div class="price"><strong>۳,۸۰۰,۰۰۰</strong><small>تومان / هر شب</small></div><a class="detail" href="#" onclick="book('هتل بزرگ آریا');return false">مشاهده و رزرو ←</a></div></div></article>
+<article class="hotel" data-city="شیراز" data-type="اقتصادی"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=85"><div class="hotel-body"><div class="hotel-top"><h3>هتل سنتی نارنجستان</h3><span class="rating">★ ۴.۶</span></div><div class="place">📍 شیراز، نزدیک بازار وکیل</div><div class="amenities"><span>🌿 حیاط سنتی</span><span>☕ صبحانه</span><span>📶 اینترنت</span></div><div class="price-row"><div class="price"><strong>۱,۴۵۰,۰۰۰</strong><small>تومان / هر شب</small></div><a class="detail" href="#" onclick="book('هتل سنتی نارنجستان');return false">مشاهده و رزرو ←</a></div></div></article>
+<article class="hotel" data-city="کیش" data-type="ساحلی"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=85"><div class="hotel-body"><div class="hotel-top"><h3>هتل ساحلی آبی</h3><span class="rating">★ ۴.۹</span></div><div class="place">📍 کیش، نزدیک ساحل</div><div class="amenities"><span>🏖 ساحل</span><span>🏊 استخر</span><span>📶 اینترنت</span></div><div class="price-row"><div class="price"><strong>۴,۲۰۰,۰۰۰</strong><small>تومان / هر شب</small></div><a class="detail" href="#" onclick="book('هتل ساحلی آبی');return false">مشاهده و رزرو ←</a></div></div></article>
+<article class="hotel" data-city="اصفهان" data-type="لوکس"><img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=85"><div class="hotel-body"><div class="hotel-top"><h3>هتل نقش جهان</h3><span class="rating">★ ۴.۷</span></div><div class="place">📍 اصفهان، چهارباغ</div><div class="amenities"><span>🛎 پذیرش ۲۴ ساعته</span><span>☕ صبحانه</span><span>📶 اینترنت</span></div><div class="price-row"><div class="price"><strong>۲,۹۰۰,۰۰۰</strong><small>تومان / هر شب</small></div><a class="detail" href="#" onclick="book('هتل نقش جهان');return false">مشاهده و رزرو ←</a></div></div></article>
+<article class="hotel" data-city="تهران" data-type="اقتصادی"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85"><div class="hotel-body"><div class="hotel-top"><h3>هتل آرامش</h3><span class="rating">★ ۴.۳</span></div><div class="place">📍 تهران، میدان ولیعصر</div><div class="amenities"><span>❄ تهویه مطبوع</span><span>🅿 پارکینگ</span><span>📶 اینترنت</span></div><div class="price-row"><div class="price"><strong>۱,۱۰۰,۰۰۰</strong><small>تومان / هر شب</small></div><a class="detail" href="#" onclick="book('هتل آرامش');return false">مشاهده و رزرو ←</a></div></div></article>
+<article class="hotel" data-city="شیراز" data-type="لوکس"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=85"><div class="hotel-body"><div class="hotel-top"><h3>بوتیک هتل بهار</h3><span class="rating">★ ۴.۸</span></div><div class="place">📍 شیراز، محله تاریخی</div><div class="amenities"><span>🌿 فضای سنتی</span><span>☕ کافه</span><span>📶 اینترنت</span></div><div class="price-row"><div class="price"><strong>۳,۱۵۰,۰۰۰</strong><small>تومان / هر شب</small></div><a class="detail" href="#" onclick="book('بوتیک هتل بهار');return false">مشاهده و رزرو ←</a></div></div></article>
+</div></div></section>
+<section class="section" id="about"><div class="wrap"><div class="promo"><div><h2>یک سفر خوب از یک انتخاب خوب شروع می‌شود</h2><p>در هتلینو، مقصدت را انتخاب کن و اقامتگاه مناسب خودت را پیدا کن.</p></div><button class="btn btn-primary" onclick="document.getElementById('destination').focus();window.scrollTo({top:0,behavior:'smooth'})">شروع جستجو</button></div></div></section>
+</main>
+
+<footer><div class="wrap foot"><div><strong>هتلینو</strong><p>Created by Roya Khodaverdi Hasanvand  <pre>
+    instagram:@roya_kh2007
+</pre></p></div><div><b>دسترسی سریع</b><p><a href="#hotels">هتل‌ها</a>　 |　 <a href="#cities">مقصدها</a>　 |　 <a href="#about">درباره ما</a></p></div></div></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="dialog"><h3 id="modalTitle"></h3><p id="modalText"></p><button class="btn btn-primary" onclick="closeModal()">متوجه شدم</button></div></div>
+<script>
+function showModal(title,text){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function book(name){showModal('درخواست رزرو '+name,'این یک نمونه اولیه از سایت است.ا،')}
+function setCity(city){document.getElementById('destination').value=city;searchHotels()}
+function filterHotels(type,button){document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));button.classList.add('active');document.querySelectorAll('.hotel').forEach(card=>card.style.display=(type==='همه'||card.dataset.type===type)?'':'none')}
+function searchHotels(){let q=document.getElementById('destination').value.trim();let count=0;document.querySelectorAll('.hotel').forEach(card=>{let match=!q||card.dataset.city.includes(q)||card.innerText.includes(q);card.style.display=match?'':'none';if(match)count++});document.getElementById('resultText').textContent=q?count+' هتل برای «'+q+'» در نمونه موجود است':'اقامتگاه‌هایی که شاید دوست داشته باشی';document.getElementById('hotels').scrollIntoView({behavior:'smooth'})}
+const today=new Date().toISOString().slice(0,10);document.getElementById('checkin').min=today;document.getElementById('checkout').min=today;
+document.getElementById('checkin').addEventListener('change',e=>{document.getElementById('checkout').min=e.target.value;if(document.getElementById('checkout').value<e.target.value)document.getElementById('checkout').value=e.target.value});
+</script>
+</body></html>
